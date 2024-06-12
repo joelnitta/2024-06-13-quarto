@@ -7,20 +7,6 @@
     "text": "We have data about 53940 diamonds. Only 126 are larger than 2.5 carats. The distribution of the remainder is shown below:"
   },
   {
-    "objectID": "2024-06-13-quarto.html",
-    "href": "2024-06-13-quarto.html",
-    "title": "2024-06-13-quarto",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "2024-06-13-quarto.html#quarto",
-    "href": "2024-06-13-quarto.html#quarto",
-    "title": "2024-06-13-quarto",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
     "objectID": "diamond-sizes-hide.html",
     "href": "diamond-sizes-hide.html",
     "title": ".",
@@ -243,12 +229,5 @@
     "title": ".",
     "section": "インラインコード",
     "text": "インラインコード\n文章の中に解析結果を埋め込みたい時に使う。 `r `で書く。\n例えば、\n\nWe have data about `r nrow(diamonds)` diamonds. Only `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats. The distribution of the remainder is shown below:"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
   }
 ]

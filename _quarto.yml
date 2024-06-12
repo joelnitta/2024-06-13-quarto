@@ -1,0 +1,17 @@
+project:
+  type: website
+
+website:
+  title: "quartoによる再現可能な文書の作成"
+  navbar:
+    left:
+      - href: index.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+
+
+

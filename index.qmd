@@ -1,0 +1,320 @@
+---
+format:
+  revealjs:
+    incremental: false
+    css: styles.css
+execute: 
+  echo: true
+---
+
+# quartoによる再現可能な文書の作成
+
+```{r}
+#| echo: false
+#| message: false
+options(width = 70)
+library(tidyverse)
+
+chunk <- "```"
+inline <- function(x = "") paste0("`` `r ", x, "` ``")
+```
+
+2024-06-13
+
+<https://joelnitta.github.io/2024-06-13-quarto/>
+
+## ディスカッション
+
+よくあるパターン：Rで解析後、その結果をWordにコピペする
+
+- この方法の**メリット**と**デメリット**を議論してください
+
+## 解析結果をWordにコピペする
+
+- 利点：
+  - 手軽である（一度だけの場合）
+
+- 欠点：
+  - 文章に記載された結果がデータに基づいている**保証がない**
+  - 解析を再び行った場合、どの部分を再度コピペすべきか**不明確になる**
+
+## Quartoを用いた再現可能な文書の作成
+
+- Quartoとは、Rコードの計算結果を直接文書に埋め込むためのソフトウェア
+
+- RやRStudioとは別だが、RStudioと一緒にインストールされるため、個別にインストールする必要はない
+
+- ファイルの拡張子は`.Qmd`
+  - 「Quarto Markdown」（Markdownについては後ほど説明する）
+
+## おすすめの資料
+
+::: {.columns}
+::: {.column}
+- 「R for Data Science」（Hadley Wickham著）<br>第２８章<br><https://r4ds.hadley.nz/quarto>
+
+- <https://quarto.org/>
+
+:::
+::: {.column}
+![](https://r4ds.hadley.nz/cover.jpg)
+:::
+:::
+
+## プロジェクトについて
+
+- スクリプトとしてコードを保存をするのはいいけど、解析が進むと複数のスクリプトとデータを**整理する必要が生じる**
+
+- RStudioの**「Project」機能**によって、スクリプトとデータ（など）の整理ができる
+
+## 新しいプロジェクトを作る
+
+- `File` ➡︎ `New Project` ➡︎ `New Directory` ➡︎ `New Project` をクリック
+  - **プロジェクト名**と**場所**を入力（今回は`2024-06-13-quarto`にしましょう）
+  - 分かりやすい場所がおすすめ（デスクトップにしましょう）
+
+- 今回は"Create a git repository"をクリックしないけど、本当はgitも使った方がいい（またあとで説明します）
+
+---
+
+![](./images/new_project.png)
+
+## 新しいプロジェクトを作る 
+
+- プロジェクト名の入力が終わると、RStudioが再度立ち上がる
+
+- ファイルパネル（右下）をよく見てください。今はRがどこに「います」か？
+
+## 新しいプロジェクトを作る
+
+- 右下の「ファイル」パネルを使って、`data`というフォルダーを作りましょう
+  - あとで、このフォルダーに**これから解析するデータを置く**
+
+![](./images/new_folder.png)
+
+## .Rprojファイルについて
+
+- 新しいプロジェクトには、`r4ds.Rproj`ファイルが入っている
+
+- `.Rproj`ファイルの中身はは基本的に**触らない**
+  - 中身はRStudioの設定（RStudioに任せましょう）
+  - 再度プロジェクトを開く時に使う（ダブルクリック）
+
+![](./images/rproj_icon.png)
+
+## 作業ディレクトリについて
+
+- 「作業ディレクトリ」（"working directory"）というのは、今Rが今「いる」場所のこと
+
+- `getwd()`で確認できる：
+
+```{r}
+#| eval: false
+getwd()
+```
+
+```{r}
+#| echo: false
+fs::dir_create("~/Desktop/2024-06-13-quarto")
+withr::with_dir("~/Desktop/2024-06-13-quarto", getwd())
+```
+
+## 作業ディレクトリについて
+
+- 時々、他のスクリプトを見ると、`set.wd()`という関数を目にする
+  - 例：`set.wd("/Users/joelnitta/analysis/")`
+  - 後ろの部分は「パス」と言う（パソコンの中の住所のような物）
+
+## 作業ディレクトリについて
+
+- でも、多くの場合、**他の人のパソコンにあるパスは自分のパソコンに存在しない**
+  - `.Rproj`を使えば、`set.wd()`を使う必要がない
+
+- なので、**`set.wd()`は使わないようにしましょう。**
+
+## RStudioのデフォルト設定を<br>変えましょう
+
+前のセッションのデータが残っていることは<br>再現的に**ダメ**！
+
+. . . 
+
+Tools → Global Options → General → Workspace
+
+- "Restore .RData into workspace at startup" → **外す**
+- "Save workspace to .RData on exit:" → **"Never"**
+
+## RStudioのデフォルト設定を<br>変えましょう
+
+前のセッションのデータが残っていることは再現の観点<br>からダメ！
+
+![](./images/settings_change.png){fig-alt="Screenshot showing how to change Rstudio settings for .RData"}
+
+## `.Qmd`ファイルの基本
+
+```{r}
+#| code-overflow: scroll
+#| echo: false
+#| comment: ""
+#| filename: diamond-sizes.qmd
+cat(readr::read_file("diamond-sizes.qmd"))
+```
+
+## 今までのコードの書き方（`.R`ファイル）
+
+- 普通に書く文章は正常なコードでないといけない
+
+- 他の文章はコメントとして書く
+
+```{r}
+#| eval: false
+
+# 小さなデータセットを作る
+smaller <- diamonds |> 
+  filter(carat <= 2.5)
+```
+
+## Quartoの書き方
+
+::: {.columns}
+::: {.column width="50%"}
+- 今までの書き方の**反対**
+  - 普通に書く文章はコード**ではない**
+  - コードを特別な場所で<br>書く（**コードチャンク**）
+  - ` ```{r} ` と ` ``` `で囲む
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="40%"}
+```{r}
+#| code-overflow: scroll
+#| echo: false
+#| comment: ""
+cat(readr::read_file("diamond-sizes-small.qmd"))
+```
+:::
+:::
+
+## コードの実行の仕方
+
+- RStudioには、それぞれのコードチャンクの上に「再生」ボタンをクリック
+
+![](https://r4ds.hadley.nz/quarto/diamond-sizes-notebook.png)
+
+## コードの実行の仕方
+
+- おすすめ：設定を「Chunk Output in Console」に変える
+
+![](https://r4ds.hadley.nz/quarto/diamond-sizes-console-output.png)
+
+## コードの実行の仕方
+
+- 全部を一気に走らせて、レポートを作成するには、「Render」ボタンをクリック
+
+![](https://r4ds.hadley.nz/quarto/diamond-sizes-report.png)
+
+## コードの実行の仕方
+
+- デフォルトでは、レポートはHTML形式
+
+![](https://r4ds.hadley.nz/quarto/diamond-sizes-report.png)
+
+## YAMLヘッダーについて
+
+- YAMLとは、「YAML ain't markup language」の略
+  - プログラマーの冗談みたいな名前。気にしないでください。
+- 設定を書くための言語。項目名を書いて、コロンを書いて、設定を書く：
+
+::: {.columns}
+::: {.column}
+```
+項目1: 設定
+項目2: 設定
+```
+:::
+::: {.column}
+```
+title: "Diamond sizes"
+date: 2022-09-12
+```
+:::
+::: 
+
+## YAMLヘッダーで設定する項目
+
+- タイトル
+- 著者名
+- 出版日程
+- 形式（PDF、HTML、docx）
+
+など
+
+## チャレンジ
+
+`author`を自分の名前に設定してくあら、レポートを出力してください
+
+## チャレンジ
+
+出力をdocxに変えてから、レポートを出力してください
+
+## Markdownでレポートの見た目を調整する
+
+- `.Qmd`ファイルはプレーンテキスト（フォントや文字のサイズなど変えることができない）
+
+- レポートのフォントなどを変えたい時は、Markdownというコードを使う：
+
+::: {.columns}
+::: {.column}
+
+```
+*italic*
+
+**bold**
+
+~~strikeout~~
+```
+
+:::
+::: {.column}
+*italic*
+
+**bold**
+
+~~strikeout~~
+:::
+:::
+
+::: {.aside}
+他のMarkdownの使い方：<https://r4ds.hadley.nz/quarto#sec-source-editor>
+:::
+
+## チャレンジ：Markdownを使ってみよう
+
+Markdownを使って、少なくて４つの見た目の違う文章を書いてみて下さい（イタリックなど）
+
+## コードチャンクの設定
+
+- それぞれのコードチャンクの設定を変えることができる
+
+- 多くの場合、レポートでは解析結果を作った**コードを見せたくない**
+  - `echo: false`設定でコードを隠す
+
+- コードチャンクの始まりに`#|`で始まる行に設定をYAMLで書く
+
+## コードチャンクの設定
+
+```{r}
+#| code-overflow: scroll
+#| echo: false
+#| comment: ""
+cat(readr::read_file("diamond-sizes-hide.qmd"))
+```
+
+## インラインコード
+
+文章の中に解析結果を埋め込みたい時に使う。 `r inline()`で書く。
+
+例えば、
+
+> We have data about `r inline('nrow(diamonds)')` diamonds.
+> Only `r inline('nrow(diamonds) - nrow(smaller)')` are larger than 2.5 carats.
+> The distribution of the remainder is shown below:

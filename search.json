@@ -9,224 +9,224 @@
   {
     "objectID": "diamond-sizes-hide.html",
     "href": "diamond-sizes-hide.html",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "",
     "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
   },
   {
     "objectID": "diamond-sizes-small.html",
     "href": "diamond-sizes-small.html",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "",
     "text": "Let’s make a smaller dataset:"
   },
   {
     "objectID": "index.html#ディスカッション",
     "href": "index.html#ディスカッション",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "ディスカッション",
     "text": "ディスカッション\nよくあるパターン：Rで解析後、その結果をWordにコピペする\n\nこの方法のメリットとデメリットを議論してください"
   },
   {
     "objectID": "index.html#解析結果をwordにコピペする",
     "href": "index.html#解析結果をwordにコピペする",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "解析結果をWordにコピペする",
     "text": "解析結果をWordにコピペする\n\n利点：\n\n手軽である（一度だけの場合）\n\n欠点：\n\n文章に記載された結果がデータに基づいている保証がない\n解析を再び行った場合、どの部分を再度コピペすべきか不明確になる"
   },
   {
     "objectID": "index.html#quartoを用いた再現可能な文書の作成",
     "href": "index.html#quartoを用いた再現可能な文書の作成",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "Quartoを用いた再現可能な文書の作成",
     "text": "Quartoを用いた再現可能な文書の作成\n\nQuartoとは、Rコードの計算結果を直接文書に埋め込むためのソフトウェア\nRやRStudioとは別だが、RStudioと一緒にインストールされるため、個別にインストールする必要はない\nファイルの拡張子は.Qmd\n\n「Quarto Markdown」（Markdownについては後ほど説明する）"
   },
   {
     "objectID": "index.html#おすすめの資料",
     "href": "index.html#おすすめの資料",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "おすすめの資料",
     "text": "おすすめの資料\n\n\n\n「R for Data Science」（Hadley Wickham著）第２８章https://r4ds.hadley.nz/quarto\nhttps://quarto.org/"
   },
   {
     "objectID": "index.html#プロジェクトについて",
     "href": "index.html#プロジェクトについて",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "プロジェクトについて",
     "text": "プロジェクトについて\n\nスクリプトとしてコードを保存をするのはいいけど、解析が進むと複数のスクリプトとデータを整理する必要が生じる\nRStudioの「Project」機能によって、スクリプトとデータ（など）の整理ができる"
   },
   {
     "objectID": "index.html#新しいプロジェクトを作る",
     "href": "index.html#新しいプロジェクトを作る",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "新しいプロジェクトを作る",
     "text": "新しいプロジェクトを作る\n\nFile ➡︎ New Project ➡︎ New Directory ➡︎ New Project をクリック\n\nプロジェクト名と場所を入力（今回は2024-06-13-quartoにしましょう）\n分かりやすい場所がおすすめ（デスクトップにしましょう）\n\n今回は”Create a git repository”をクリックしないけど、本当はgitも使った方がいい（またあとで説明します）"
   },
   {
     "objectID": "index.html#新しいプロジェクトを作る-1",
     "href": "index.html#新しいプロジェクトを作る-1",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "新しいプロジェクトを作る",
     "text": "新しいプロジェクトを作る\n\nプロジェクト名の入力が終わると、RStudioが再度立ち上がる\nファイルパネル（右下）をよく見てください。今はRがどこに「います」か？"
   },
   {
     "objectID": "index.html#新しいプロジェクトを作る-2",
     "href": "index.html#新しいプロジェクトを作る-2",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "新しいプロジェクトを作る",
     "text": "新しいプロジェクトを作る\n\n右下の「ファイル」パネルを使って、dataというフォルダーを作りましょう\n\nあとで、このフォルダーにこれから解析するデータを置く"
   },
   {
     "objectID": "index.html#rprojファイルについて",
     "href": "index.html#rprojファイルについて",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": ".Rprojファイルについて",
     "text": ".Rprojファイルについて\n\n新しいプロジェクトには、r4ds.Rprojファイルが入っている\n.Rprojファイルの中身はは基本的に触らない\n\n中身はRStudioの設定（RStudioに任せましょう）\n再度プロジェクトを開く時に使う（ダブルクリック）"
   },
   {
     "objectID": "index.html#作業ディレクトリについて",
     "href": "index.html#作業ディレクトリについて",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "作業ディレクトリについて",
     "text": "作業ディレクトリについて\n\n「作業ディレクトリ」（“working directory”）というのは、今Rが今「いる」場所のこと\ngetwd()で確認できる：\n\n\ngetwd()\n\n\n\n[1] \"/Users/joelnitta/Desktop/2024-06-13-quarto\""
   },
   {
     "objectID": "index.html#作業ディレクトリについて-1",
     "href": "index.html#作業ディレクトリについて-1",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "作業ディレクトリについて",
     "text": "作業ディレクトリについて\n\n時々、他のスクリプトを見ると、set.wd()という関数を目にする\n\n例：set.wd(\"/Users/joelnitta/analysis/\")\n後ろの部分は「パス」と言う（パソコンの中の住所のような物）"
   },
   {
     "objectID": "index.html#作業ディレクトリについて-2",
     "href": "index.html#作業ディレクトリについて-2",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "作業ディレクトリについて",
     "text": "作業ディレクトリについて\n\nでも、多くの場合、他の人のパソコンにあるパスは自分のパソコンに存在しない\n\n.Rprojを使えば、set.wd()を使う必要がない\n\nなので、set.wd()は使わないようにしましょう。"
   },
   {
     "objectID": "index.html#rstudioのデフォルト設定を-変えましょう",
     "href": "index.html#rstudioのデフォルト設定を-変えましょう",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "RStudioのデフォルト設定を変えましょう",
     "text": "RStudioのデフォルト設定を変えましょう\n前のセッションのデータが残っていることは再現的にダメ！\n\nTools → Global Options → General → Workspace\n\n“Restore .RData into workspace at startup” → 外す\n“Save workspace to .RData on exit:” → “Never”"
   },
   {
     "objectID": "index.html#rstudioのデフォルト設定を-変えましょう-1",
     "href": "index.html#rstudioのデフォルト設定を-変えましょう-1",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "RStudioのデフォルト設定を変えましょう",
     "text": "RStudioのデフォルト設定を変えましょう\n前のセッションのデータが残っていることは再現の観点からダメ！"
   },
   {
     "objectID": "index.html#qmdファイルの基本",
     "href": "index.html#qmdファイルの基本",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": ".Qmdファイルの基本",
     "text": ".Qmdファイルの基本\n\n\n---\ntitle: \"Diamond sizes\"\ndate: 2022-09-12\nformat: html\n---\n\n```{r}\n#| label: setup\n#| include: false\n\nlibrary(tidyverse)\n\nsmaller &lt;- diamonds |&gt; \n  filter(carat &lt;= 2.5)\n```\n\nWe have data about `r nrow(diamonds)` diamonds.\nOnly `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats.\nThe distribution of the remainder is shown below:\n\n```{r}\n#| label: plot-smaller-diamonds\n#| echo: false\n\nsmaller |&gt; \n  ggplot(aes(x = carat)) + \n  geom_freqpoly(binwidth = 0.01)\n```"
   },
   {
     "objectID": "index.html#今までのコードの書き方.rファイル",
     "href": "index.html#今までのコードの書き方.rファイル",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "今までのコードの書き方（.Rファイル）",
     "text": "今までのコードの書き方（.Rファイル）\n\n普通に書く文章は正常なコードでないといけない\n他の文章はコメントとして書く\n\n\n# 小さなデータセットを作る\nsmaller &lt;- diamonds |&gt; \n  filter(carat &lt;= 2.5)"
   },
   {
     "objectID": "index.html#quartoの書き方",
     "href": "index.html#quartoの書き方",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "Quartoの書き方",
     "text": "Quartoの書き方\n\n\n\n今までの書き方の反対\n\n普通に書く文章はコードではない\nコードを特別な場所で書く（コードチャンク）\n```{r} と ```で囲む\n\n\n\n\n\n\n\nLet's make a smaller dataset:\n\n```{r}\n#| label: setup\n#| include: false\n\nlibrary(tidyverse)\n\nsmaller &lt;- diamonds |&gt; \n  filter(carat &lt;= 2.5)\n```"
   },
   {
     "objectID": "index.html#コードの実行の仕方",
     "href": "index.html#コードの実行の仕方",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "コードの実行の仕方",
     "text": "コードの実行の仕方\n\nRStudioには、それぞれのコードチャンクの上に「再生」ボタンをクリック"
   },
   {
     "objectID": "index.html#コードの実行の仕方-1",
     "href": "index.html#コードの実行の仕方-1",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "コードの実行の仕方",
     "text": "コードの実行の仕方\n\nおすすめ：設定を「Chunk Output in Console」に変える"
   },
   {
     "objectID": "index.html#コードの実行の仕方-2",
     "href": "index.html#コードの実行の仕方-2",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "コードの実行の仕方",
     "text": "コードの実行の仕方\n\n全部を一気に走らせて、レポートを作成するには、「Render」ボタンをクリック"
   },
   {
     "objectID": "index.html#コードの実行の仕方-3",
     "href": "index.html#コードの実行の仕方-3",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "コードの実行の仕方",
     "text": "コードの実行の仕方\n\nデフォルトでは、レポートはHTML形式"
   },
   {
     "objectID": "index.html#yamlヘッダーについて",
     "href": "index.html#yamlヘッダーについて",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "YAMLヘッダーについて",
     "text": "YAMLヘッダーについて\n\nYAMLとは、「YAML ain’t markup language」の略\n\nプログラマーの冗談みたいな名前。気にしないでください。\n\n設定を書くための言語。項目名を書いて、コロンを書いて、設定を書く：\n\n\n\n項目1: 設定\n項目2: 設定\n\ntitle: \"Diamond sizes\"\ndate: 2022-09-12"
   },
   {
     "objectID": "index.html#yamlヘッダーで設定する項目",
     "href": "index.html#yamlヘッダーで設定する項目",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "YAMLヘッダーで設定する項目",
     "text": "YAMLヘッダーで設定する項目\n\nタイトル\n著者名\n出版日程\n形式（PDF、HTML、docx）\n\nなど"
   },
   {
     "objectID": "index.html#チャレンジ",
     "href": "index.html#チャレンジ",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "チャレンジ",
     "text": "チャレンジ\nauthorを自分の名前に設定してくあら、レポートを出力してください"
   },
   {
     "objectID": "index.html#チャレンジ-1",
     "href": "index.html#チャレンジ-1",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "チャレンジ",
     "text": "チャレンジ\n出力をdocxに変えてから、レポートを出力してください"
   },
   {
     "objectID": "index.html#markdownでレポートの見た目を調整する",
     "href": "index.html#markdownでレポートの見た目を調整する",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "Markdownでレポートの見た目を調整する",
     "text": "Markdownでレポートの見た目を調整する\n\n.Qmdファイルはプレーンテキスト（フォントや文字のサイズなど変えることができない）\nレポートのフォントなどを変えたい時は、Markdownというコードを使う：\n\n\n\n*italic*\n\n**bold**\n\n~~strikeout~~\n\nitalic\nbold\nstrikeout\n\n\n\n\n他のMarkdownの使い方：https://r4ds.hadley.nz/quarto#sec-source-editor"
   },
   {
     "objectID": "index.html#チャレンジmarkdownを使ってみよう",
     "href": "index.html#チャレンジmarkdownを使ってみよう",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "チャレンジ：Markdownを使ってみよう",
     "text": "チャレンジ：Markdownを使ってみよう\nMarkdownを使って、少なくて４つの見た目の違う文章を書いてみて下さい（イタリックなど）"
   },
   {
     "objectID": "index.html#コードチャンクの設定",
     "href": "index.html#コードチャンクの設定",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "コードチャンクの設定",
     "text": "コードチャンクの設定\n\nそれぞれのコードチャンクの設定を変えることができる\n多くの場合、レポートでは解析結果を作ったコードを見せたくない\n\necho: false設定でコードを隠す\n\nコードチャンクの始まりに#|で始まる行に設定をYAMLで書く"
   },
   {
     "objectID": "index.html#コードチャンクの設定-1",
     "href": "index.html#コードチャンクの設定-1",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "コードチャンクの設定",
     "text": "コードチャンクの設定\n\n\n```{r}\n#| echo: false\nlibrary(tidyverse)\n\nsmaller &lt;- diamonds |&gt; \n  filter(carat &lt;= 2.5)\n```"
   },
   {
     "objectID": "index.html#インラインコード",
     "href": "index.html#インラインコード",
-    "title": ".",
+    "title": "quartoによる再現可能な文書の作成",
     "section": "インラインコード",
     "text": "インラインコード\n文章の中に解析結果を埋め込みたい時に使う。 `r `で書く。\n例えば、\n\nWe have data about `r nrow(diamonds)` diamonds. Only `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats. The distribution of the remainder is shown below:"
   }

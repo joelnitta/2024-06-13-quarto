@@ -715,15 +715,30 @@ date: 2022-09-12</code></pre>
 <h2>チャレンジ：Markdownを使ってみよう</h2>
 <p>Markdownを使って、少なくて４つの見た目の違う文章を書いてみて下さい（イタリックなど）</p>
 </section>
+<section id="チャレンジ文献情報を入れる" class="slide level2">
+<h2>チャレンジ：文献情報を入れる</h2>
+<p>ビジュアルエディタで、Insert（挿入） &gt; Citation（引用）と進み、DOI（デジタルオブジェクト識別子）が<code>10.21105/joss.01686</code>である論文「Welcome to the Tidyverse」への引用を挿入してください。</p>
+<p>文書をレンダーし、引用が文書内にどのように表示されるかを確認してください。</p>
+<p>あなたの文書のYAMLにどのような変更が生じたか観察してください。</p>
+</section>
+<section id="コードチャンクの挿入の仕方" class="slide level2">
+<h2>コードチャンクの挿入の仕方</h2>
+<p>三通りあります（どれでもよい）：</p>
+<ul>
+<li><p>ショートカット：Cmd + Option + I / Ctrl + Alt + I.</p></li>
+<li><p>エディターの「Insert」ボタン</p></li>
+<li><p>手で打つ： <code>```{r}</code> と <code>```</code></p></li>
+</ul>
+</section>
 <section id="コードチャンクの設定" class="slide level2">
 <h2>コードチャンクの設定</h2>
 <ul>
-<li><p>それぞれのコードチャンクの設定を変えることができる</p></li>
-<li><p>多くの場合、レポートでは解析結果を作った<strong>コードを見せたくない</strong></p>
-<ul>
-<li><code>echo: false</code>設定でコードを隠す</li>
-</ul></li>
+<li><p>それぞれのコードチャンクの<strong>設定</strong>（Options）を変えることができる</p></li>
 <li><p>コードチャンクの始まりに<code>#|</code>で始まる行に設定をYAMLで書く</p></li>
+<li><p>例えば：多くの場合、レポートでは解析結果を作った<strong>コードを見せたくない</strong></p>
+<ul>
+<li><code>#| echo: false</code>設定でコードを隠す</li>
+</ul></li>
 </ul>
 </section>
 <section id="コードチャンクの設定-1" class="slide level2">
@@ -740,6 +755,34 @@ smaller &lt;- diamonds |&gt;
 </div>
 </div>
 </section>
+<section id="コードチャンクの設定-2" class="slide level2">
+<h2>コードチャンクの設定</h2>
+<ul>
+<li>設定は全部が６０以上あります！（全部覚える必要はないので、心配しないでください）
+<ul>
+<li><a href="https://r4ds.hadley.nz/quarto#chunk-options">重要なオプション</a></li>
+<li><a href="https://yihui.org/knitr/options/">全部のオプション</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="チャレンジラベルを指定しよう" class="slide level2">
+<h2>チャレンジ：ラベルを指定しよう</h2>
+<p>新しいコードチャンクを挿入してから、そのチャンクの中でダイヤモンドのサイズ（<code>carat</code>）の平均値を計算して下さい。</p>
+<p>それから、<code>label</code>というオプションを使って、チャンクのラベルを設定して下さい。</p>
+<p>エディッターの左上のコードナビゲーターを確認して下さい。何が変わりましたか？</p>
+</section>
+<section id="ラベルのルール" class="slide level2">
+<h2>ラベルのルール</h2>
+<p>コードチャンクにはラベルが必須ではありませんが、あった方がいいです。ラベルはそのチャンクが何をしているのか、自分にとって分かりやすいように書きましょう。</p>
+<ul>
+<li>書くとしたら、守らないといけないルールもあります：
+<ul>
+<li>ラベルがダブっていかない</li>
+<li>ラベルにはアンダースコアが使えない（？使わないほうがいいらしい）。言葉の間にハイフンを入れましょう。</li>
+<li><code>setup</code>というラベルがついているコードチャンクは特別。必ず一番最初に実行される。</li>
+</ul></li>
+</ul>
+</section>
 <section id="インラインコード" class="slide level2">
 <h2>インラインコード</h2>
 <p>文章の中に解析結果を埋め込みたい時に使う。 <code>`r `</code>で書く。</p>
@@ -747,6 +790,10 @@ smaller &lt;- diamonds |&gt;
 <blockquote>
 <p>We have data about <code>`r nrow(diamonds)`</code> diamonds. Only <code>`r nrow(diamonds) - nrow(smaller)`</code> are larger than 2.5 carats. The distribution of the remainder is shown below:</p>
 </blockquote>
+</section>
+<section id="チャレンジ-2" class="slide level2">
+<h2>チャレンジ</h2>
+<p>インラインコードを使って、ダイヤモンドのサイズ（<code>carat</code>）の平均値を書いて下さい。</p>
 
 <div class="footer footer-default">
 

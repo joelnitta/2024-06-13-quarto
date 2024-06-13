@@ -210,11 +210,25 @@
     "text": "チャレンジ：Markdownを使ってみよう\nMarkdownを使って、少なくて４つの見た目の違う文章を書いてみて下さい（イタリックなど）"
   },
   {
+    "objectID": "index.html#チャレンジ文献情報を入れる",
+    "href": "index.html#チャレンジ文献情報を入れる",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "チャレンジ：文献情報を入れる",
+    "text": "チャレンジ：文献情報を入れる\nビジュアルエディタで、Insert（挿入） &gt; Citation（引用）と進み、DOI（デジタルオブジェクト識別子）が10.21105/joss.01686である論文「Welcome to the Tidyverse」への引用を挿入してください。\n文書をレンダーし、引用が文書内にどのように表示されるかを確認してください。\nあなたの文書のYAMLにどのような変更が生じたか観察してください。"
+  },
+  {
+    "objectID": "index.html#コードチャンクの挿入の仕方",
+    "href": "index.html#コードチャンクの挿入の仕方",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "コードチャンクの挿入の仕方",
+    "text": "コードチャンクの挿入の仕方\n三通りあります（どれでもよい）：\n\nショートカット：Cmd + Option + I / Ctrl + Alt + I.\nエディターの「Insert」ボタン\n手で打つ： ```{r} と ```"
+  },
+  {
     "objectID": "index.html#コードチャンクの設定",
     "href": "index.html#コードチャンクの設定",
     "title": "quartoによる再現可能な文書の作成",
     "section": "コードチャンクの設定",
-    "text": "コードチャンクの設定\n\nそれぞれのコードチャンクの設定を変えることができる\n多くの場合、レポートでは解析結果を作ったコードを見せたくない\n\necho: false設定でコードを隠す\n\nコードチャンクの始まりに#|で始まる行に設定をYAMLで書く"
+    "text": "コードチャンクの設定\n\nそれぞれのコードチャンクの設定（Options）を変えることができる\nコードチャンクの始まりに#|で始まる行に設定をYAMLで書く\n例えば：多くの場合、レポートでは解析結果を作ったコードを見せたくない\n\n#| echo: false設定でコードを隠す"
   },
   {
     "objectID": "index.html#コードチャンクの設定-1",
@@ -224,10 +238,38 @@
     "text": "コードチャンクの設定\n\n\n```{r}\n#| echo: false\nlibrary(tidyverse)\n\nsmaller &lt;- diamonds |&gt; \n  filter(carat &lt;= 2.5)\n```"
   },
   {
+    "objectID": "index.html#コードチャンクの設定-2",
+    "href": "index.html#コードチャンクの設定-2",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "コードチャンクの設定",
+    "text": "コードチャンクの設定\n\n設定は全部が６０以上あります！（全部覚える必要はないので、心配しないでください）\n\n重要なオプション\n全部のオプション"
+  },
+  {
+    "objectID": "index.html#チャレンジラベルを指定しよう",
+    "href": "index.html#チャレンジラベルを指定しよう",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "チャレンジ：ラベルを指定しよう",
+    "text": "チャレンジ：ラベルを指定しよう\n新しいコードチャンクを挿入してから、そのチャンクの中でダイヤモンドのサイズ（carat）の平均値を計算して下さい。\nそれから、labelというオプションを使って、チャンクのラベルを設定して下さい。\nエディッターの左上のコードナビゲーターを確認して下さい。何が変わりましたか？"
+  },
+  {
+    "objectID": "index.html#ラベルのルール",
+    "href": "index.html#ラベルのルール",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "ラベルのルール",
+    "text": "ラベルのルール\nコードチャンクにはラベルが必須ではありませんが、あった方がいいです。ラベルはそのチャンクが何をしているのか、自分にとって分かりやすいように書きましょう。\n\n書くとしたら、守らないといけないルールもあります：\n\nラベルがダブっていかない\nラベルにはアンダースコアが使えない（？使わないほうがいいらしい）。言葉の間にハイフンを入れましょう。\nsetupというラベルがついているコードチャンクは特別。必ず一番最初に実行される。"
+  },
+  {
     "objectID": "index.html#インラインコード",
     "href": "index.html#インラインコード",
     "title": "quartoによる再現可能な文書の作成",
     "section": "インラインコード",
     "text": "インラインコード\n文章の中に解析結果を埋め込みたい時に使う。 `r `で書く。\n例えば、\n\nWe have data about `r nrow(diamonds)` diamonds. Only `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats. The distribution of the remainder is shown below:"
+  },
+  {
+    "objectID": "index.html#チャレンジ-2",
+    "href": "index.html#チャレンジ-2",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "チャレンジ",
+    "text": "チャレンジ\nインラインコードを使って、ダイヤモンドのサイズ（carat）の平均値を書いて下さい。"
   }
 ]

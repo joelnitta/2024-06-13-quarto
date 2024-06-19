@@ -11,7 +11,7 @@
     "href": "diamond-sizes-hide.html",
     "title": "quartoによる再現可能な文書の作成",
     "section": "",
-    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+    "text": "── Attaching core tidyverse packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
   },
   {
     "objectID": "diamond-sizes-small.html",
@@ -271,5 +271,61 @@
     "title": "quartoによる再現可能な文書の作成",
     "section": "チャレンジ",
     "text": "チャレンジ\nインラインコードを使って、ダイヤモンドのサイズ（carat）の平均値を書いて下さい。"
+  },
+  {
+    "objectID": "index.html#表の作り方",
+    "href": "index.html#表の作り方",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "表の作り方",
+    "text": "表の作り方\n\nMarkdownでは、このように表を作ることができます：\n\n\n\nColumn A | Column B | Column C\n---------|----------|---------\n A1 | B1 | C1\n A2 | B2 | C2\n A3 | B3 | C3\n\n\n\n\nColumn A\nColumn B\nColumn C\n\n\n\n\nA1\nB1\nC1\n\n\nA2\nB2\nC2\n\n\nA3\nB3\nC3"
+  },
+  {
+    "objectID": "index.html#表の作り方-1",
+    "href": "index.html#表の作り方-1",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "表の作り方",
+    "text": "表の作り方\n\n表が小さければ大丈夫かもしれないけど、長くなるといちいち打つのが大変ですね。\nその場合はデータフレームを使えば良い"
+  },
+  {
+    "objectID": "index.html#表の作り方-2",
+    "href": "index.html#表の作り方-2",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "表の作り方",
+    "text": "表の作り方\n\nまずはデータフレームを作りましょう：\n\n\nbiggest_diamonds &lt;- diamonds |&gt;\n  slice_max(carat, n = 5) |&gt;\n  select(carat:price)\n\nbiggest_diamonds\n\n# A tibble: 5 × 7\n  carat cut     color clarity depth table price\n  &lt;dbl&gt; &lt;ord&gt;   &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;\n1  5.01 Fair    J     I1       65.5    59 18018\n2  4.5  Fair    J     I1       65.8    58 18531\n3  4.13 Fair    H     I1       64.8    61 17329\n4  4.01 Premium I     I1       61      61 15223\n5  4.01 Premium J     I1       62.5    62 15223"
+  },
+  {
+    "objectID": "index.html#表の作り方-3",
+    "href": "index.html#表の作り方-3",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "表の作り方",
+    "text": "表の作り方\n\nデータフレームを表として出力するには、knitrパッケージが必要なので、ロードしましょう：\n\n\nlibrary(knitr)"
+  },
+  {
+    "objectID": "index.html#表の作り方-4",
+    "href": "index.html#表の作り方-4",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "表の作り方",
+    "text": "表の作り方\n\nknitrのkable()関数でデータフレームを表として主力します：\n\n\nkable(biggest_diamonds)\n\n\n\nTable 1: Top 5 Biggest Diamonds\n\n\n\n\n\n\ncarat\ncut\ncolor\nclarity\ndepth\ntable\nprice\n\n\n\n\n5.01\nFair\nJ\nI1\n65.5\n59\n18018\n\n\n4.50\nFair\nJ\nI1\n65.8\n58\n18531\n\n\n4.13\nFair\nH\nI1\n64.8\n61\n17329\n\n\n4.01\nPremium\nI\nI1\n61.0\n61\n15223\n\n\n4.01\nPremium\nJ\nI1\n62.5\n62\n15223"
+  },
+  {
+    "objectID": "index.html#表や図の差し方",
+    "href": "index.html#表や図の差し方",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "表や図の差し方",
+    "text": "表や図の差し方\n\n前のコードチャンクオプションでこのような書き方にしました：\n\n#| label: tbl-diamonds\n\nこれは特別な意味がある：「このコードチャンクの出力は表だよ」\n従って、レポートの中でこの表を指したい時は@tbl-&lt;テーブル名&gt;と書くと、そのテーブルを指すことができます："
+  },
+  {
+    "objectID": "index.html#今日の課題",
+    "href": "index.html#今日の課題",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "今日の課題",
+    "text": "今日の課題\n\n今日の課題は、自分たちで解析したフローサイトメーターのデータを使って、レポートを書くことです。\n\n先週のスライドを手がかりにして下さい。\n新しいプロジェクトから始めて下さい。\n二人ずつチームを組んでやって下さい。\n\n私はウロウロして、ヒントや助言をあげます"
+  },
+  {
+    "objectID": "index.html#目的のイメージ",
+    "href": "index.html#目的のイメージ",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "目的のイメージ",
+    "text": "目的のイメージ\n\nデータを読み込む\n必要に応じて形を整える\n少なくとも１つの図を作る\nレポートをこんな形に仕上げる：\n\n背景\n方法\n結果\n参考文献"
   }
 ]

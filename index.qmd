@@ -365,3 +365,115 @@ cat(readr::read_file("diamond-sizes-hide.qmd"))
 
 インラインコードを使って、ダイヤモンドのサイズ（`carat`）の平均値を書いて下さい。
 
+# quartoによる再現可能な文書の作成<br>（パート２）
+
+<https://joelnitta.github.io/2024-06-13-quarto/>
+
+## 表の作り方
+
+- Markdownでは、このように表を作ることができます：
+
+::: {.columns}
+::: {.column}
+```
+Column A | Column B | Column C
+---------|----------|---------
+ A1 | B1 | C1
+ A2 | B2 | C2
+ A3 | B3 | C3
+```
+:::
+::: {.column}
+Column A | Column B | Column C
+---------|----------|---------
+ A1 | B1 | C1
+ A2 | B2 | C2
+ A3 | B3 | C3
+:::
+:::
+
+## 表の作り方
+
+- 表が小さければ大丈夫かもしれないけど、長くなるといちいち打つのが大変ですね。
+
+- その場合は**データフレームを使えば**良い
+
+## 表の作り方
+
+- まずはデータフレームを作りましょう：
+
+```{r}
+biggest_diamonds <- diamonds |>
+  slice_max(carat, n = 5) |>
+  select(carat:price)
+
+biggest_diamonds
+```
+
+## 表の作り方
+
+- データフレームを表として出力するには、`knitr`パッケージが必要なので、ロードしましょう：
+
+```{r}
+library(knitr)
+```
+
+## 表の作り方
+
+- `knitr`の`kable()`関数でデータフレームを表として主力します：
+
+```{r}
+#| label: tbl-big-diamonds
+#| tbl-cap: "Top 5 Biggest Diamonds"
+
+kable(biggest_diamonds)
+```
+
+## 表や図の差し方
+
+- 前のコードチャンクオプションでこのような書き方にしました：
+
+```
+#| label: tbl-diamonds
+```
+
+- これは特別な意味がある：「このコードチャンクの出力は表だよ」
+
+- 従って、レポートの中でこの表を指したい時は`@tbl-<テーブル名>`と書くと、そのテーブルを指すことができます：
+
+---
+
+::: {.columns}
+::: {.column}
+```
+Big diamonds are very expensive; see @tbl-big-diamonds.
+```
+:::
+::: {.column}
+Big diamonds are very expensive; see @tbl-big-diamonds.
+:::
+:::
+
+## 今日の課題
+
+- 今日の課題は、自分たちで解析したフローサイトメーターのデータを使って、レポートを書くことです。
+  - 先週のスライドを手がかりにして下さい。
+  - 新しいプロジェクトから始めて下さい。
+  - 二人ずつチームを組んでやって下さい。
+
+- 私はウロウロして、ヒントや助言をあげます
+
+## 目的のイメージ
+
+- データを読み込む
+- 必要に応じて形を整える
+- 少なくとも１つの図を作る
+- レポートをこんな形に仕上げる：
+  - 背景
+  - 方法
+  - 結果
+  - 参考文献
+  
+---
+
+頑張りましょう！

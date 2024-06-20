@@ -8,7 +8,7 @@
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.3.450">
 
   <title>quartoによる再現可能な文書の作成</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -221,8 +221,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -500,7 +499,7 @@
 <li><p><code>getwd()</code>で確認できる：</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -586,9 +585,9 @@ smaller |&gt;
 <li><p>他の文章はコメントとして書く</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># 小さなデータセットを作る</span></span>
-<span id="cb4-2"><a></a>smaller <span class="ot">&lt;-</span> diamonds <span class="sc">|&gt;</span> </span>
-<span id="cb4-3"><a></a>  <span class="fu">filter</span>(carat <span class="sc">&lt;=</span> <span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># 小さなデータセットを作る</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>smaller <span class="ot">&lt;-</span> diamonds <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">filter</span>(carat <span class="sc">&lt;=</span> <span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="quartoの書き方" class="slide level2">
@@ -860,11 +859,11 @@ smaller &lt;- diamonds |&gt;
 <li>まずはデータフレームを作りましょう：</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>biggest_diamonds <span class="ot">&lt;-</span> diamonds <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">slice_max</span>(carat, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a></a>  <span class="fu">select</span>(carat<span class="sc">:</span>price)</span>
-<span id="cb11-4"><a></a></span>
-<span id="cb11-5"><a></a>biggest_diamonds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>biggest_diamonds <span class="ot">&lt;-</span> diamonds <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">slice_max</span>(carat, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">select</span>(carat<span class="sc">:</span>price)</span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a>biggest_diamonds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 7
   carat cut     color clarity depth table price
@@ -883,7 +882,7 @@ smaller &lt;- diamonds |&gt;
 <li>データフレームを表として出力するには、<code>knitr</code>パッケージが必要なので、ロードしましょう：</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="表の作り方-4" class="slide level2">
@@ -891,16 +890,20 @@ smaller &lt;- diamonds |&gt;
 <ul>
 <li><code>knitr</code>の<code>kable()</code>関数でデータフレームを表として主力します：</li>
 </ul>
+</section>
+<section class="slide level2">
+
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">kable</span>(biggest_diamonds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-big-diamonds" class="cell quarto-float">
-<figure class="quarto-float quarto-float-tbl">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-big-diamonds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Top 5 Biggest Diamonds
-</figcaption>
-<div aria-describedby="tbl-big-diamonds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co">#| label: tbl-big-diamonds</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co">#| tbl-cap: "Top 5 Biggest Diamonds"</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">kable</span>(biggest_diamonds)</span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="do-not-create-environment cell">
+<div id="tbl-big-diamonds">
+<table>
+<caption>Table&nbsp;1: Top 5 Biggest Diamonds</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">carat</th>
@@ -962,8 +965,6 @@ Table&nbsp;1: Top 5 Biggest Diamonds
 </table>
 </div>
 </div>
-</figure>
-</div>
 </div>
 </section>
 <section id="表や図の差し方" class="slide level2">
@@ -981,9 +982,31 @@ Table&nbsp;1: Top 5 Biggest Diamonds
 
 <div class="columns">
 <div class="column">
-<pre><code>Big diamonds are very expensive; see @tbl-big-diamonds.</code></pre>
+<pre><code>Big diamonds are very expensive (@tbl-big-diamonds).</code></pre>
 </div><div class="column">
-<p>Big diamonds are very expensive; see <a href="#/表の作り方-4" class="quarto-xref">Table&nbsp;1</a>.</p>
+<p>Big diamonds are very expensive (<a href="#/tbl-big-diamonds">Table&nbsp;1</a>).</p>
+</div>
+</div>
+</section>
+<section id="図でもやってみましょう" class="slide level2">
+<h2>図でもやってみましょう</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1"></a><span class="in">```{r}</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co">#| label: fig-diamonds-prices</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co">#| fig-cap: "Price of diamonds increases with size"</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>)</span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/fig-diamonds-prices-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: Price of diamonds increases with size</p></section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column">
+<pre><code>The price of diamonds increases with size (@fig-diamonds-prices).</code></pre>
+</div><div class="column">
+<p>The price of diamonds increases with size (<a href="#/fig-diamonds-prices">Figure&nbsp;1</a>).</p>
 </div>
 </div>
 </section>
@@ -992,7 +1015,7 @@ Table&nbsp;1: Top 5 Biggest Diamonds
 <ul>
 <li>今日の課題は、自分たちで解析したフローサイトメーターのデータを使って、レポートを書くことです。
 <ul>
-<li>先週のスライドを手がかりにして下さい。</li>
+<li>先週のスライドや<a href="https://joelnitta.github.io/uehara-r">去年の資料</a>を参考にして下さい。</li>
 <li>新しいプロジェクトから始めて下さい。</li>
 <li>二人ずつチームを組んでやって下さい。</li>
 </ul></li>
@@ -1013,17 +1036,14 @@ Table&nbsp;1: Top 5 Biggest Diamonds
 <li>参考文献</li>
 </ul></li>
 </ul>
-</section>
-<section class="slide level2">
+</section></section>
+<section id="頑張りましょう" class="title-slide slide level1 center">
+<h1>頑張りましょう！</h1>
 
-<p>頑張りましょう！</p>
-
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-</div>
-</section></section>
+</section>
     </div>
   </div>
 
@@ -1050,6 +1070,7 @@ Table&nbsp;1: Top 5 Biggest Diamonds
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1348,9 +1369,10 @@ Table&nbsp;1: Top 5 Biggest Diamonds
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1360,17 +1382,8 @@ Table&nbsp;1: Top 5 Biggest Diamonds
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 

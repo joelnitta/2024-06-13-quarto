@@ -11,7 +11,7 @@
     "href": "diamond-sizes-hide.html",
     "title": "quartoによる再現可能な文書の作成",
     "section": "",
-    "text": "── Attaching core tidyverse packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
   },
   {
     "objectID": "diamond-sizes-small.html",
@@ -305,7 +305,7 @@
     "href": "index.html#表の作り方-4",
     "title": "quartoによる再現可能な文書の作成",
     "section": "表の作り方",
-    "text": "表の作り方\n\nknitrのkable()関数でデータフレームを表として主力します：\n\n\nkable(biggest_diamonds)\n\n\n\nTable 1: Top 5 Biggest Diamonds\n\n\n\n\n\n\ncarat\ncut\ncolor\nclarity\ndepth\ntable\nprice\n\n\n\n\n5.01\nFair\nJ\nI1\n65.5\n59\n18018\n\n\n4.50\nFair\nJ\nI1\n65.8\n58\n18531\n\n\n4.13\nFair\nH\nI1\n64.8\n61\n17329\n\n\n4.01\nPremium\nI\nI1\n61.0\n61\n15223\n\n\n4.01\nPremium\nJ\nI1\n62.5\n62\n15223"
+    "text": "表の作り方\n\nknitrのkable()関数でデータフレームを表として主力します："
   },
   {
     "objectID": "index.html#表や図の差し方",
@@ -315,11 +315,18 @@
     "text": "表や図の差し方\n\n前のコードチャンクオプションでこのような書き方にしました：\n\n#| label: tbl-diamonds\n\nこれは特別な意味がある：「このコードチャンクの出力は表だよ」\n従って、レポートの中でこの表を指したい時は@tbl-&lt;テーブル名&gt;と書くと、そのテーブルを指すことができます："
   },
   {
+    "objectID": "index.html#図でもやってみましょう",
+    "href": "index.html#図でもやってみましょう",
+    "title": "quartoによる再現可能な文書の作成",
+    "section": "図でもやってみましょう",
+    "text": "図でもやってみましょう\n\n```{r}\n#| label: fig-diamonds-prices\n#| fig-cap: \"Price of diamonds increases with size\"\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(alpha = 0.1)\n```\n\n\nFigure 1: Price of diamonds increases with size"
+  },
+  {
     "objectID": "index.html#今日の課題",
     "href": "index.html#今日の課題",
     "title": "quartoによる再現可能な文書の作成",
     "section": "今日の課題",
-    "text": "今日の課題\n\n今日の課題は、自分たちで解析したフローサイトメーターのデータを使って、レポートを書くことです。\n\n先週のスライドを手がかりにして下さい。\n新しいプロジェクトから始めて下さい。\n二人ずつチームを組んでやって下さい。\n\n私はウロウロして、ヒントや助言をあげます"
+    "text": "今日の課題\n\n今日の課題は、自分たちで解析したフローサイトメーターのデータを使って、レポートを書くことです。\n\n先週のスライドや去年の資料を参考にして下さい。\n新しいプロジェクトから始めて下さい。\n二人ずつチームを組んでやって下さい。\n\n私はウロウロして、ヒントや助言をあげます"
   },
   {
     "objectID": "index.html#目的のイメージ",

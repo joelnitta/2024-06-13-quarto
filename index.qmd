@@ -418,13 +418,17 @@ biggest_diamonds
 library(knitr)
 ```
 
+
 ## 表の作り方
 
 - `knitr`の`kable()`関数でデータフレームを表として主力します：
 
+---
+
 ```{r}
 #| label: tbl-big-diamonds
 #| tbl-cap: "Top 5 Biggest Diamonds"
+#| echo: fenced
 
 kable(biggest_diamonds)
 ```
@@ -446,18 +450,46 @@ kable(biggest_diamonds)
 ::: {.columns}
 ::: {.column}
 ```
-Big diamonds are very expensive; see @tbl-big-diamonds.
+Big diamonds are very expensive (@tbl-big-diamonds).
 ```
 :::
 ::: {.column}
-Big diamonds are very expensive; see @tbl-big-diamonds.
+Big diamonds are very expensive (@tbl-big-diamonds).
 :::
 :::
+
+## 図でもやってみましょう
+
+```{r}
+#| label: fig-diamonds-prices
+#| fig-cap: "Price of diamonds increases with size"
+#| echo: fenced
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point(alpha = 0.1)
+```
+
+---
+
+::: {.columns}
+::: {.column}
+
+```
+The price of diamonds increases with size (@fig-diamonds-prices).
+```
+
+:::
+::: {.column}
+
+The price of diamonds increases with size (@fig-diamonds-prices).
+
+:::
+:::
+
 
 ## 今日の課題
 
 - 今日の課題は、自分たちで解析したフローサイトメーターのデータを使って、レポートを書くことです。
-  - 先週のスライドを手がかりにして下さい。
+  - 先週のスライドや[去年の資料](https://joelnitta.github.io/uehara-r)を参考にして下さい。
   - 新しいプロジェクトから始めて下さい。
   - 二人ずつチームを組んでやって下さい。
 
@@ -474,6 +506,4 @@ Big diamonds are very expensive; see @tbl-big-diamonds.
   - 結果
   - 参考文献
   
----
-
-頑張りましょう！
+# 頑張りましょう！
